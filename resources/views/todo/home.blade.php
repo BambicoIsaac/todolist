@@ -11,7 +11,8 @@
     <h1 style="text-align: center;">Todo - Home</h1>
     <br><br>
     
-    <a href="/todo/create">Create New Todo</a>
+    <a class="btn btn-primary" href="/todo/create">Create New Todo</a>
+    <br><br>
 
     <table class="table table-bordered">
         <thead>
@@ -29,11 +30,11 @@
             <td><b>{{ $todo -> title }}</b></td>
             <td>{{ $todo -> due_date}}</td>
             <td>                
-                <a href="/todo/update/{{ $todo->id }}" style="color:green;">
+                <a class="btn btn-success" href="/todo/update/{{ $todo->id }}">
                     Update
                 </a>
 
-                <a href="/todo/delete/{{ $todo->id }}" style="color:red;">
+                <a class="btn btn-danger "href="/todo/delete/{{ $todo->id }}">
                     Delete
                 </a>
             </td>
