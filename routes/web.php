@@ -41,6 +41,8 @@ Route::get('/todo/update/{id}',
     'update'
 ]);
 
+Route::post('todo/change-details/{id}', [TodoController::class, 'changedetails']);
+
 Route::get('/todo/complete/{id}', 
     [TodoController::class,
     'complete'

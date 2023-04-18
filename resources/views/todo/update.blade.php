@@ -10,8 +10,29 @@
 <body>
     <h1 style="text-align: center;">Todo - Update</h1>
     <br><br>
-    <a class="btn btn-success" href="/todo/complete/{{ $todo->id }}">Mark as Done</a>    
-    <a class="btn btn-danger" href="/todo/ongoing/{{ $todo->id }}">Mark as In Progress</a>
+    <form action="{{ url('todo/change-details/'.$todo->id) }}" method="POST">
+        @csrf
+        @method('POST')
+
+        <div class="form-group mb-3">
+            <label for="">Title</label>
+            <input type="text" name="title" value="{{$todo->title}}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="">Due Date</label>
+             <input type="text" name="due_date" value="{{$todo->due_date}}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary">Update Todo</button>
+            <a class="btn btn-outline-success" href="/todo/complete/{{ $todo->id }}">
+                Mark as Done
+            </a>    
+            <a class="btn btn-outline-danger" href="/todo/ongoing/{{ $todo->id }}">
+                Mark as In Progress
+            </a>
+        </div>
+    </form>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
