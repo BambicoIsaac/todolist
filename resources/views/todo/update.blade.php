@@ -18,11 +18,13 @@
             <label for="">Title</label>
             <input type="text" name="title" value="{{$todo->title}}" class="form-control">
         </div>
+        <br>
         <div class="form-group mb-3">
             <label for="">Due Date</label>
              <input type="text" name="due_date" value="{{$todo->due_date}}" class="form-control">
         </div>
-        <div class="form-group mb-3">
+        <br><br>
+        <div class="form-group mb-3" style="text-align: center;">
             <button type="submit" class="btn btn-primary">Update Todo</button>
             <a class="btn btn-outline-success" href="/todo/complete/{{ $todo->id }}">
                 Mark as Done
