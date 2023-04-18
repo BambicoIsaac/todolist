@@ -29,6 +29,8 @@ Route::get('/todo/create',
     'create'
 ]);
 
+Route::post('store-form', [TodoController::class, 'store']);
+
 Route::get('/todo/delete/{id}', 
     [TodoController::class,
     'delete'

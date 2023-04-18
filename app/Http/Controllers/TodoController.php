@@ -16,14 +16,20 @@ class TodoController extends Controller
     }
 
     public function create()
-    {
+    {     
+        return view('todo.create');
 
-        Todo::create([
-            'title' => 'Eat lunch',
-            'due_date' => '2023-04-17'
-        ]);
+    }
 
-        return back();
+    public function store(Request $request)
+    {     
+        $todo = new Todo;
+        $todo -> title = $request -> title;
+        $todo -> due_date = $request -> due_date;
+        $todo -> save();
+
+        return redirect('todo');
+
     }
 
 
