@@ -40,3 +40,13 @@ Route::get('/todo/update/{id}',
     [TodoController::class,
     'update'
 ]);
+
+Route::get('/todo/complete/{id}', 
+    [TodoController::class,
+    'complete'
+]);
+
+Route::get('/todo/ongoing/{id}', 
+    [TodoController::class,
+    'ongoing'
+]);

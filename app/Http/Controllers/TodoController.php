@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use Illuminate\Support\Str;
 
 class TodoController extends Controller
 {
@@ -24,7 +25,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {     
         $todo = new Todo;
-        $todo -> title = $request -> title;
+        $todo -> title = '(❌ IN PROGRESS) '.$request -> title;
         $todo -> due_date = $request -> due_date;
         $todo -> save();
 
@@ -43,13 +44,31 @@ class TodoController extends Controller
 
     public function update($id)
     {
+        $todo = Todo::find($id);
+        return view('todo.update', ['todo' => $todo]); 
+    }
+
+    public function complete($id)
+    {
 
         $todo = Todo::find($id);
 
         $todo->update([
-            'title' => '✅ '.$todo->title
+            'title' => Str::replace('(❌ IN PROGRESS) ', '(✅ DONE) ', $todo -> title)
         ]);
 
-        return back();
+        return redirect('todo');
+    }
+
+    public function ongoing($id)
+    {
+
+        $todo = Todo::find($id);
+
+        $todo->update([
+            'title' => Str::replace('(✅ DONE) ', '(❌ IN PROGRESS) ', $todo -> title)
+        ]);
+
+        return redirect('todo');
     }
 }
