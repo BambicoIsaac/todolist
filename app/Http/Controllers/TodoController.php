@@ -24,40 +24,35 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {     
-        $todo = new Todo;
-        $todo -> title = '(❌ IN PROGRESS) '.$request -> title;
-        $todo -> due_date = $request -> due_date;
-        $todo -> save();
-
+        Todo::create([
+            'title'=> '(❌ IN PROGRESS) '.$request -> title,
+            'due_date' => $request -> due_date
+        ]);
         return redirect('todo');
 
     }
-
 
     public function delete($id)
     {
 
         Todo::find($id)->delete();
-
         return back();
     }
 
     public function update($id)
     {
         $todo = Todo::find($id);
-        return view('todo.update', compact('todo')); 
+        return view('todo.update') -> with(['todo' => $todo]); 
     }
 
     public function changedetails(Request $request, $id)
     {
-        $todo = Todo::find($id);
-        $todo->title = $request->input('title');
-        $todo->due_date = $request->input('due_date');
-        $todo->update();
-
+        Todo::find($id)->update([
+            'title' => $request->title,
+            'due_date' => $request->due_date            
+        ]);
         return redirect('todo');
     }
-
 
     public function complete($id)
     {

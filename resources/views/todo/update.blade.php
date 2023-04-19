@@ -10,9 +10,8 @@
 <body>
     <h1 style="text-align: center;">Todo - Update</h1>
     <br><br>
-    <form action="{{ url('todo/change-details/'.$todo->id) }}" method="POST">
+    <form action="{{ URL::route('changedetails', $todo->id) }}" method="POST">
         @csrf
-        @method('POST')
 
         <div class="form-group mb-3">
             <label for="">Title</label>
@@ -21,15 +20,15 @@
         <br>
         <div class="form-group mb-3">
             <label for="">Due Date</label>
-             <input type="text" name="due_date" value="{{$todo->due_date}}" class="form-control">
+             <input type="date" name="due_date" value="{{$todo->due_date}}" class="form-control">
         </div>
         <br><br>
         <div class="form-group mb-3" style="text-align: center;">
             <button type="submit" class="btn btn-primary">Update Todo</button>
-            <a class="btn btn-outline-success" href="/todo/complete/{{ $todo->id }}">
+            <a class="btn btn-outline-success" href="{{ URL::route('complete', $todo->id) }}">
                 Mark as Done
             </a>    
-            <a class="btn btn-outline-danger" href="/todo/ongoing/{{ $todo->id }}">
+            <a class="btn btn-outline-danger" href="{{ URL::route('ongoing', $todo->id) }}">
                 Mark as In Progress
             </a>
         </div>

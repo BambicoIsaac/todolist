@@ -11,20 +11,16 @@
     <h1 style="text-align: center;">Todo - Create</h1>
     <br><br>
 
-    <form name="add-todo-post-form" id="add-todo-post-form" method="post" action="{{url('store-form')}}">
+    <form name="add-todo-post-form" id="add-todo-post-form" method="post" action="{{URL::route('store')}}">
        @csrf
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
           <input type="text" id="title" name="title" class="form-control" required="" placeholder="Describe your todo.">
         </div>
         <br><br>
-        <!-- 
-        <label for="startDate">Due Date</label>
-        <input id="startDate" class="form-control" type="date" />
-        -->
         <div class="form-group">
           <label for="exampleInputEmail1">Due Date</label>
-          <input type="text" id="due_date" name="due_date" class="form-control" required="" placeholder="Format: YYYY-MM-DD">
+          <input type="date" id="due_date" name="due_date" class="form-control" required="" placeholder="Format: YYYY-MM-DD">
         </div>
         <br><br>
         <button type="submit" class="btn btn-primary">Create Todo</button>

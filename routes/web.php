@@ -29,7 +29,9 @@ Route::get('/todo/create',
     'create'
 ]);
 
-Route::post('store-form', [TodoController::class, 'store']);
+Route::post('store-form', 
+    [TodoController::class,
+    'store'])->name('store');
 
 Route::get('/todo/delete/{id}', 
     [TodoController::class,
@@ -41,14 +43,15 @@ Route::get('/todo/update/{id}',
     'update'
 ]);
 
-Route::post('todo/change-details/{id}', [TodoController::class, 'changedetails']);
+Route::post('todo/change-details/{id}',
+    [TodoController::class,'changedetails'])
+    ->name('changedetails');
 
 Route::get('/todo/complete/{id}', 
-    [TodoController::class,
-    'complete'
-]);
+    [TodoController::class,'complete'])
+    ->name('complete');
 
 Route::get('/todo/ongoing/{id}', 
     [TodoController::class,
-    'ongoing'
-]);
+    'ongoing'])
+    ->name('ongoing');
