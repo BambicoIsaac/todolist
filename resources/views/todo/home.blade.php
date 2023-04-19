@@ -30,11 +30,11 @@
             <td><b>{{ $todo -> title }}</b></td>
             <td>{{ $todo -> due_date}}</td>
             <td>                
-                <a class="btn btn-success" href="/todo/update/{{ $todo->id }}">
+                <a class="btn btn-success" href="{{ URL::route('update', $todo->id) }}">
                     Update
                 </a>
 
-                <a class="btn btn-danger "href="/todo/delete/{{ $todo->id }}">
+                <a class="btn btn-danger "href="{{ URL::route('delete', $todo->id) }}">
                     Delete
                 </a>
             </td>

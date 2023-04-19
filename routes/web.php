@@ -35,13 +35,13 @@ Route::post('store-form',
 
 Route::get('/todo/delete/{id}', 
     [TodoController::class,
-    'delete'
-]);
+    'delete'])
+    ->name('delete');
 
 Route::get('/todo/update/{id}', 
     [TodoController::class,
-    'update'
-]);
+    'update'])
+    ->name('update');
 
 Route::post('todo/change-details/{id}',
     [TodoController::class,'changedetails'])
